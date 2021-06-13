@@ -1,1 +1,23 @@
-<p>login works!</p>
+<div class="loginForm">
+    <h2>Login Form:</h2>
+    <div class="container loginForm">
+        <div class="row">
+            <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+                <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" required formControlName="name"
+                            [(ngModel)]="model.name" name="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">password</label>
+                        <input type="password" class="form-control" id="password" required formControlName="password"
+                            [(ngModel)]="model.password" name="password">
+                    </div>
+                    <span *ngIf="invalidDetails" class="help-block">Please ensure entered values are correct!</span>
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,1 +1,80 @@
-<p>registration works!</p>
+<div>
+    <h2>Registration Form:</h2>
+
+    <form class="reg-form" [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="fname">First Name:</label>
+            <input type="text" class="form-control" formControlName="fname" id="fname">
+        </div>
+        <div class="form-group">
+            <label for="lname">Last Name:</label>
+            <input type="text" class="form-control" formControlName="lname" id="lname">
+        </div>
+        <div class="form-group">
+            <label for="usr">UserName:</label>
+            <input type="text" class="form-control" formControlName="usr" id="usr">
+            <span *ngIf="!registrationForm.get('usr').valid && registrationForm.get('usr').touched" class="help-block">
+                <span *ngIf="registrationForm.get('usr').errors['nameIsForbidden']">This name is already taken</span>
+                <span *ngIf="registrationForm.get('usr').errors['required']">This field is required!</span>
+            </span>
+        </div>
+         <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="text" class="form-control" formControlName="email" id="email">
+            <span *ngIf="!registrationForm.get('email').valid && registrationForm.get('email').touched"
+                class="help-block">Please enter a valid email!</span>
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone:</label>
+            <input type="number" class="form-control" formControlName="phone" id="phone">
+            <span *ngIf="!registrationForm.get('phone').valid && registrationForm.get('phone').touched" class="help-block">
+                <span *ngIf="registrationForm.get('phone').errors['invalidPhonenUmber']">Please enter valid phone number</span>
+                <span *ngIf="registrationForm.get('phone').errors['required']">This field is required!</span>
+            </span>
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" formControlName="password" id="password">
+            <span *ngIf="!registrationForm.get('password').valid && registrationForm.get('password').touched" class="help-block">
+                <span *ngIf="registrationForm.get('password').errors['invalidPassword']">Please enter valid password number</span>
+                <span *ngIf="registrationForm.get('password').errors['required']">This field is required!</span>
+            </span>
+        </div>
+        <div class="form-group">
+            <label for="cnfpassword">Confirm Password:</label>
+            <input type="password" class="form-control" formControlName="cnfpassword" id="cnfpassword">
+            <span *ngIf="!registrationForm.get('cnfpassword').valid && registrationForm.get('cnfpassword').touched" class="help-block">
+                <span *ngIf="registrationForm.get('cnfpassword').errors['cnfPasswordCriteria']">Not matching with password</span>
+                <span *ngIf="registrationForm.get('cnfpassword').errors['required']">This field is required!</span>
+            </span>
+        </div>
+        <div class="radio" *ngFor="let gender of genders">
+            <label>
+                <input type="radio" formControlName="gender" [value]="gender" required>{{ gender }}
+            </label>
+        </div>
+        <div class="form-group">
+            <label for="dob">Date Of Birth:</label>
+            <input type="date" class="form-control" formControlName="dob" id="dob">
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" formControlName="confirm" id="confirm">
+            <label class="form-check-label" for="confirm">Confirm T&C</label>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-success" type="submit">Submit</button>
+        </div>
+
+    </form>
+</div>
+<!-- 
+first name : required
+b) last name: required
+c) username: required, min 4 chars, should not be 'abc123', 'abc_123' -> should show already taken message
+d) email: required, proper email validation
+e) phone: required, numbers only, length 10
+f) password: required, min 8 chars, 1 digit, 1 special char, 1 uppercase
+g) confirm password: required, should be same as password
+h) radio buttons for gender: required
+i) date picker : date of birth: required
+j) checkbox to confirm T&C: required -->
