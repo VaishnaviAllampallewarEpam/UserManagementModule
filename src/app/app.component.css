@@ -1,0 +1,17 @@
+.pgHeaders {
+    position: relative;
+    width: 100%;
+}
+
+.labelButtons {
+    position: relative;
+    top: 3vh;
+    left: 80vw;
+}
+
+.labelLR {
+    margin: 2px 2px 2px 2px;
+    color: blue;
+    cursor: pointer;
+    font-size: large;
+}

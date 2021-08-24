@@ -1,7 +1,7 @@
 <div>
     <h2>Registration Form:</h2>
 
-    <form class="reg-form" [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+    <form class="reg-form" [formGroup]="registrationForm" (ngSubmit)="onSubmit()" autocomplete="off">
         <div class="form-group">
             <label for="fname">First Name:</label>
             <input type="text" class="form-control" formControlName="fname" id="fname">

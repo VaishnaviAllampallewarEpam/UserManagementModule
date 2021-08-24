@@ -1,0 +1,10 @@
+.user-list {
+    position: relative;
+    top: 70px;
+}
+
+.list {
+    left: 10px;
+    position: relative;
+    width: 98vw;
+}

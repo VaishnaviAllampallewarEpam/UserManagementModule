@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, NgForm } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,10 +9,12 @@ import { FormControl, FormGroup, NgForm } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   
+  @ViewChild('content') content: any;
   invalidDetails = false;
   signupForm: any;
   model: any ;
-  constructor() { }
+  closeResult = '';
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.signupForm = new FormGroup({
@@ -28,6 +31,9 @@ export class LoginComponent implements OnInit {
     console.log('Username: ',this.model.name,' Password: ',this.model.password);
     if (this.model.name === 'abc' || this.model.password === '$Admin#1') {
       this.invalidDetails = true;
+    }
+    if (this.model.name === 'Admin') {
+      this.router.navigate(['/userList']);
     }
   }
  

@@ -26,24 +26,14 @@ export class RegistrationComponent implements OnInit {
       'dob': new FormControl(null, [Validators.required]),
       'confirm': new FormControl(false, [Validators.required])
     });
-    // this.registrationForm = new FormGroup({
-    //   'fname': new FormControl(null, [Validators.required]),
-    //   'lname': new FormControl(null, [Validators.required]),
-    //   'usr': new FormControl(null, [Validators.required, this.forbiddenNames]),
-    //   'email': new FormControl(null, [Validators.required, Validators.email]),
-    //   'phone': new FormControl(null, [Validators.required]),
-    //   'password': new FormControl(null, [Validators.required, this.passwordCheck]),
-    //   'cnfpassword': new FormControl(null, [Validators.required, this.confirmPassword.bind(this)]),
-    //   'gender': new FormControl('Male', [Validators.required]),
-    //   'date': new FormControl(null, [Validators.required]),
-    //   'confirm': new FormControl(null, [Validators.required])
-    // });
   }
 
   onSubmit() {
     if (this.registrationForm.valid) {
       alert('SuccessFully Registered');
       this.route.navigate(['/login']);
+    } else {
+      alert('Please fill up all the details');
     }
   }
 
